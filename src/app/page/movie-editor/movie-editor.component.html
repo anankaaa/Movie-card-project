@@ -1,0 +1,137 @@
+<!-- {"id":1,"title":"Wild Hogs",
+"genre":"Adventure|Comedy","director":"Gena Kevern",
+"releaseYear":1992,"poster":"https://nettuts.hu/img/cinema-posters/district2.jpg",
+"studio":"Warner Brothers","active":true}  -->
+
+<div class="row">
+  <div *ngIf="movie$ | async as movie" class="col-6 offset-3">
+    <h1 class="mt-5" >Movie Card Editor</h1>
+    <hr class="mx-auto" style="width: 50%" />
+    <hr class="mx-auto mb-5" style="width: 20%" />
+    <form #eventForm="ngForm" >
+      <div class="form-group mb-2 mt-2">
+        <label for="" class="mb-2">Title</label>
+        <input
+          name="title"
+          [(ngModel)]="movie.title"
+          type="text"
+          class="form-control"
+          pattern="[A-Z].{0,49}"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['title']?.valid"
+          class="error-message"
+        >
+          The title must be with capital and be filled maximum 50 characters
+          long.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Category</label>
+        <input
+          name="category"
+          [(ngModel)]="movie.genre"
+          type="text"
+          class="form-control"
+          pattern="[A-Z].{0,25}"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['category']?.valid"
+          class="error-message"
+        >
+          The category must be filled, maximum 25 characters long.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Director</label>
+        <input
+          name="director"
+          [(ngModel)]="movie.director"
+          type="text"
+          class="form-control"
+          pattern="(^[A-Za-z]{0,20})([ ]{0,1})([A-Za-z]{1,20})?([ ]{0,1})?([A-Za-z]{1,20})"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['director']?.valid"
+          class="error-message"
+        >
+          Director must be filled with capital letters, maximum 3 nametag.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Release Year</label>
+        <input
+          name="releaseYear"
+          [(ngModel)]="movie.releaseYear"
+          type="number"
+          class="form-control"
+          pattern="\b(19|20)\d\d\b"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['releaseYear']?.valid"
+          class="error-message"
+        >
+          Release Year must be from 1900 and 4 character long.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Studio</label>
+        <input
+          name="studio"
+          [(ngModel)]="movie.studio"
+          type="text"
+          class="form-control"
+          pattern="(^[A-Za-z]{0,20})([ ]{0,1})([A-Za-z]{1,20})?([ ]{0,1})?([A-Za-z]{1,20})"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['studio']?.valid"
+          class="error-message"
+        >
+          Studio must be filled with capital letters, maximum 3 nametag.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Poster</label>
+        <input
+          name="poster"
+          [(ngModel)]="movie.poster"
+          type="url"
+          class="form-control"
+          required
+        />
+        <div
+          [hidden]="eventForm.controls['poster']?.valid"
+          class="error-message"
+        >
+          Poster URL must be added.
+        </div>
+      </div>
+      <div class="form-group mb-2">
+        <label for="" class="mb-2">Active</label>
+        <select
+          name="active"
+          [(ngModel)]="movie.active"
+          type="type"
+          class="form-select"
+          required
+        >
+          <option selected>{{movie.active}}</option>
+          <option value="true">true</option>
+          <option value="false">false</option>
+        </select>
+      </div>
+      <button
+        (click)="onSave(movie)"
+        type="submit"
+        class="btn btn-warning btn-lg mt-2"
+      >
+        <i class="fa fa-save"> SAVE</i>
+      </button>
+    </form>
+  </div>
+</div>

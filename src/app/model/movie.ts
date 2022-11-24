@@ -1,5 +1,4 @@
 export class Movie {
-  [x:string]:any;
   id: number = 0;
   title: string = '';
   genre: string = '';

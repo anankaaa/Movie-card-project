@@ -1,0 +1,43 @@
+ .row {
+  background-color: antiquewhite;
+  background-image: none;
+  height: 100vh;
+ }
+
+ label {
+  color: darkorange;
+  font-weight: bolder;
+  margin-left: 5px;
+}
+
+input, select {
+  border-color: darkorange;
+  color: darkolivegreen;
+  font-weight: 500;
+}
+
+input:hover, select:hover, button:hover {
+  box-shadow: 2px 2px 2px darkgrey;
+}
+
+h1 {
+  color: darkolivegreen;
+  display: flex;
+  justify-content: center;
+}
+
+.error-message {
+  color: red;
+  font-weight: bolder;
+  margin: 10px;
+}
+
+button {
+  border:3px solid darkorange;
+  color: rgb(10, 70, 10)
+}
+
+
+
+
+

@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://nettuts.hu/jms/anankaaa/cinema'
+  apiUrl: 'https://nettuts.hu/jms/anankaaa/'
 };
 
 /*

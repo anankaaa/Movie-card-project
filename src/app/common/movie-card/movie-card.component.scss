@@ -1,0 +1,55 @@
+.card {
+  height: 500px;
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+  box-shadow: 5px 5px 10px lightblue;
+}
+
+.card:hover {
+  box-shadow: 6px 6px 20px  rgb(89, 175, 209);
+}
+
+.card-title {
+  font-size: 1.2em;
+  border: 1px solid darkgrey;
+  background-color: lightgray;
+  border-radius: 5px;
+  box-shadow: 5px 5px 10px lightblue;
+}
+
+.card-text{
+  font-size: 0.4em;
+}
+
+.card-img-top{
+  height: 200px;
+  object-fit:cover;
+}
+
+.card-img-top:hover {
+	object-fit:contain;
+}
+
+.btn {
+  box-shadow: 2px 2px 2px grey;
+  justify-content: center;
+	align-items: center;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+	align-items: center;
+  height: 35px;
+  margin: 3px;
+}
+
+.btn-primary:hover {
+  box-shadow: 4px 4px 4px darkblue;
+
+}
+
+.btn-danger:hover {
+  box-shadow: 4px 4px 4px darkred;
+
+}
+

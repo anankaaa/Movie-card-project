@@ -1,1 +1,32 @@
-<p>movie-card works!</p>
+<!-- export class Movie {
+  [x:string]:any;
+  id: number = 0;
+  title: string = '';
+  genre: string = '';
+  director: string = '';
+  releaseYear: number= 0;
+  poster: string = '';
+  studio: string = '';
+  active: boolean = true;
+} -->
+<div class="container d-flex">
+  <div class="card col-sm-12-md-6-lg-2" style="width: 14rem">
+    <img src="{{ movie.poster }}" class="card-img-top" alt="movie poster" />
+    <div class="card-body">
+      <h6 class="card-title mb-0">{{ movie.title }}</h6>
+    </div>
+    <ul class="list-group list-group-flush">
+      <li class="list-group-item">Category: {{ movie.genre }}</li>
+      <li class="list-group-item">Studio: {{ movie.studio }}</li>
+      <li class="list-group-item">Year: {{ movie.releaseYear }}</li>
+    </ul>
+    <div class="btn-group ml-2">
+      <button  class="btn btn-danger mr-2">
+        <i class="fa fa-trash"></i>
+      </button>
+      <button [routerLink]="['/' + 'movie/' + movie.id]" class="btn btn-primary">
+        <i class="fa fa-pencil"></i>
+      </button>
+    </div>
+  </div>
+</div>
