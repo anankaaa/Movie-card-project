@@ -9,10 +9,17 @@ import { MovieService } from 'src/app/service/movie.service';
   styleUrls: ['./movie-list.component.scss']
 })
 export class MovieListComponent<T extends {[x: string]: any}> implements OnInit {
-  @Output() movies: Movie[] = [];
+  @Output() movies: Movie[] | null = null;
+  @Output() movie: Movie= new Movie;
+
+  //filter
+  filterPhrase: string = '';
+
+  //paginator
   @Input() pageSize: number = 20;
   currentPage: number = 1;
-  @Input() list: T[] = [];
+  pageNumberState: boolean = false;
+  pageCount: number = 0;
 
   movieList$!: Observable<Movie[]>;
 
@@ -23,17 +30,40 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
   }
 
   getPageNumbers(): number[] {
-    const pageCount: number = Math.ceil(this.movies.length / this.pageSize);
+    if(!this.pageNumberState){
+      this.movieList$.subscribe(data => {this.movies = data})
+      this.pageNumberState = true;
+    }
+    if((this.pageSize != 0)&&(this.movies!= null)){
+    this.pageCount = Math.ceil(this.movies!.length / this.pageSize);
     let nums: number[] = [];
-    for (let i = 0; i < pageCount; i++) {
+    for (let i = 0; i < this.pageCount; i++) {
       nums[i] = i +1;
     }
 
     return nums;
+    console.log(nums)
   }
+  else{
+    return [];
+  }
+}
 
   jumpToPage(pageNum: number): void {
     this.currentPage = pageNum;
   }
 
+  jumpPrevious(){
+    if(this.currentPage>1){
+      this.currentPage = this.currentPage - 1;
+    }
+  }
+
+  jumpNext(){
+    console.log(this.currentPage, this.pageCount)
+    if(this.currentPage<this.pageCount-1){
+      this.currentPage = this.currentPage + 1;
+
+    }
+  }
 }

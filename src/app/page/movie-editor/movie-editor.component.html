@@ -4,11 +4,11 @@
 "studio":"Warner Brothers","active":true}  -->
 
 <div class="row">
-  <div *ngIf="movie$ | async as movie" class="col-6 offset-3">
+  <div *ngIf="movie$ | async as movie" (ngSubmit)="onUpdate(eventForm, movie)" class="col-6 offset-3">
     <h1 class="mt-5" >Movie Card Editor</h1>
     <hr class="mx-auto" style="width: 50%" />
     <hr class="mx-auto mb-5" style="width: 20%" />
-    <form #eventForm="ngForm" >
+    <form #eventForm="ngForm">
       <div class="form-group mb-2 mt-2">
         <label for="" class="mb-2">Title</label>
         <input
@@ -126,6 +126,7 @@
         </select>
       </div>
       <button
+      [disabled]="eventForm.invalid"
         (click)="onSave(movie)"
         type="submit"
         class="btn btn-warning btn-lg mt-2"

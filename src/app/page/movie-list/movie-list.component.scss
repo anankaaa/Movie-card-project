@@ -1,1 +1,24 @@
+.new {
+  display: flex;
+  justify-content: flex-start;
+  margin-right: 50px;
+}
+
+.input-group {
+  width: 30%;
+  margin-right: 50px;
+
+}
+
+.pagination {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.previous, .next {
+  color: darkblue;
+  font-size: medium;
+  font-weight: bolder;
+  border-color: darkblue;
+}
 

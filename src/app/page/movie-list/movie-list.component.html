@@ -1,8 +1,32 @@
-<div class="row">
+<h1>Movie List</h1>
+
+
+<div class="input-group mb-3 col-12 col-sm-6 mt-3">
+  <input
+    [(ngModel)]="filterPhrase"
+    type="text"
+    class="form-control"
+    placeholder="@Search"
+    aria-label="Search"
+    aria-describedby="button-addon2"
+  />
+</div>
+
+<div class="new mr-3">
+  <button class="btn btn-success mb-5" [routerLink]="['/movie', 0]">
+    + New Movie Card
+  </button>
+</div>
+
+
+
+<div class="pagination row">
   <div class="col-12">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
-        <li class="page-item"><a class="page-link" href="#">Previous</a></li>
+        <li class="page-item">
+          <a class="previous page-link" (click)="jumpPrevious()">Previous</a>
+        </li>
 
         <li *ngFor="let pageNum of getPageNumbers()" class="page-item">
           <a class="page-link" (click)="jumpToPage(pageNum)">
@@ -10,14 +34,30 @@
           </a>
         </li>
 
-        <li class="page-item"><a class="page-link" href="#">Next</a></li>
+        <li class="page-item">
+          <a class="next page-link" (click)="jumpNext()">Next</a>
+        </li>
       </ul>
     </nav>
   </div>
 </div>
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4" >
-  <app-movie-card class="mb-4" *ngFor="let movie of movieList$ | async | slice:((currentPage-1)*pageSize):(currentPage*pageSize)" [movie]="movie"></app-movie-card>
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+  <app-movie-card
+  class="mb-4"
+  *ngFor="
+  let movie of movieList$
+  | async
+  | slice: ((currentPage - 1) * pageSize):(currentPage * pageSize)
+  | filter
+  : {
+    title: filterPhrase,
+    genre: filterPhrase,
+    studio: filterPhrase,
+    releaseYear: filterPhrase
+  }
+  "
+  [movie]="movie"
+  ></app-movie-card>
 </div>
-
-

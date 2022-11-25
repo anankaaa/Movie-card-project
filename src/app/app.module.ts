@@ -10,6 +10,8 @@ import { HomeComponent } from './page/home/home.component';
 import { MovieListComponent } from './page/movie-list/movie-list.component';
 import { MovieCardComponent } from './common/movie-card/movie-card.component';
 import { MovieEditorComponent } from './page/movie-editor/movie-editor.component';
+import { FilterPipe } from './pipe/filter.pipe';
+import { SorterPipe } from './pipe/sorter.pipe';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,9 @@ import { MovieEditorComponent } from './page/movie-editor/movie-editor.component
     HomeComponent,
     MovieListComponent,
     MovieCardComponent,
-    MovieEditorComponent
+    MovieEditorComponent,
+    FilterPipe,
+    SorterPipe
   ],
   imports: [
     BrowserModule,
