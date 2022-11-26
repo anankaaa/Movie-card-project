@@ -11,8 +11,15 @@ import { MovieService } from 'src/app/service/movie.service';
 export class MovieCardComponent implements OnInit {
   @Input() movie: Movie = new Movie();
 
+ movieList$: Observable<Movie[]>  = this.movieService.getAll();
 
-  constructor() {}
+  constructor(
+    private movieService: MovieService
+  ) {}
 
   ngOnInit(): void {}
+
+  onDelete(movie: Movie): void {
+    this.movieService.remove(movie).subscribe(movie => this.movieList$ = this.movieService.getAll());
+  }
 }

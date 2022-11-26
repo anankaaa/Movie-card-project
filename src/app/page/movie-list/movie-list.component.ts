@@ -3,6 +3,11 @@ import { Observable } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
 
+interface ITableColumn {
+  title: string;
+  key: string;
+}
+
 @Component({
   selector: 'app-movie-list',
   templateUrl: './movie-list.component.html',
@@ -12,8 +17,11 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
   @Output() movies: Movie[] | null = null;
   @Output() movie: Movie= new Movie;
 
+
+
   //filter
   filterPhrase: string = '';
+  filterKey: string = '';
 
   //paginator
   @Input() pageSize: number = 20;
@@ -21,13 +29,22 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
   pageNumberState: boolean = false;
   pageCount: number = 0;
 
-  movieList$!: Observable<Movie[]>;
+  movieList$: Observable<Movie[]> =  this.movieService.getAll();
 
   constructor(private movieService: MovieService) { }
 
+
+  //filter
   ngOnInit(): void {
-    this.movieList$ = this.movieService.getAll();
+    fetch('https://nettuts.hu/jms/anankaaa/cinema')
+      .then(
+        response => response.json(),
+      ).then(
+        list => this.movies = list,
+      );
   }
+
+  //paginator
 
   getPageNumbers(): number[] {
     if(!this.pageNumberState){
@@ -42,7 +59,6 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
     }
 
     return nums;
-    console.log(nums)
   }
   else{
     return [];
@@ -66,4 +82,36 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
 
     }
   }
+
+  //filter
+
+  columns: ITableColumn[] = [
+    {
+      key: 'title',
+      title: 'Title',
+    },
+    {
+      key: 'genre',
+      title: 'Genre',
+    },
+    {
+      key: 'director',
+      title: 'Director',
+    },
+    {
+      key: 'releaseYear',
+      title: 'ReleaseYear',
+    },
+    {
+      key: 'studio',
+      title: 'Studio',
+    },
+    {
+      key: 'active',
+      title: 'Active',
+    },
+
+  ];
+
+  searchColumns: ITableColumn[] = [];
 }

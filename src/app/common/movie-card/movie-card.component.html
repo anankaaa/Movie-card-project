@@ -21,7 +21,7 @@
       <li class="list-group-item">Year: {{ movie.releaseYear }}</li>
     </ul>
     <div class="btn-group ml-2">
-      <button  class="btn btn-danger mr-2">
+      <button  class="btn btn-danger mr-2" (click)="onDelete(movie)">
         <i class="fa fa-trash"></i>
       </button>
       <button [routerLink]="['/' + 'movie/' + movie.id]" class="btn btn-primary">

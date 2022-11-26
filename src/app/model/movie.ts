@@ -7,6 +7,7 @@ export class Movie {
   poster: string = '';
   studio: string = '';
   active: boolean = true;
+  static id: any;
 }
 
 

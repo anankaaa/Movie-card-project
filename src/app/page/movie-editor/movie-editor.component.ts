@@ -26,8 +26,7 @@ export class MovieEditorComponent implements OnInit {
 
   ngOnInit(): void {}
 
-    onUpdate(form:NgForm, movie: Movie):void {
-      movie.id = Number(movie.id);
+    onUpdate(eventForm: NgForm, movie: Movie):void {
       if(movie.id === 0 ){
         this.movieService.create(movie).subscribe(movie => this.router.navigate(['/movie-list']))
       }
@@ -37,4 +36,5 @@ export class MovieEditorComponent implements OnInit {
      onSave(movie: Movie): void {
       this.movieService.update(movie).subscribe(movie => this.router.navigate(['/movie-list']))
     }
+
 }

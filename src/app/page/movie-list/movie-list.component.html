@@ -1,16 +1,22 @@
 <h1>Movie List</h1>
 
 
-<div class="input-group mb-3 col-12 col-sm-6 mt-3">
-  <input
-    [(ngModel)]="filterPhrase"
-    type="text"
-    class="form-control"
-    placeholder="@Search"
-    aria-label="Search"
-    aria-describedby="button-addon2"
-  />
+<div class="row">
+  <div class="col-12 my-2">
+    <div class="input-group mb-3">
+      <div class="input-group-text">
+        <select [(ngModel)]="filterKey" class="form-control">
+          <option value="">Click for Search Menu</option>
+          <option *ngFor="let col of columns" [value]="col.key">
+            {{ col.title }}
+          </option>
+        </select>
+      </div>
+      <input [(ngModel)]="filterPhrase" class="form-control" type="text" placeholder="@Search text">
+    </div>
+  </div>
 </div>
+
 
 <div class="new mr-3">
   <button class="btn btn-success mb-5" [routerLink]="['/movie', 0]">
