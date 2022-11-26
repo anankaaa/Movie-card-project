@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
@@ -34,7 +35,10 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
 
   movieList$: Observable<Movie[]> =  this.movieService.getAll();
 
-  constructor(private movieService: MovieService) { }
+  constructor(
+    private movieService: MovieService,
+    private toastr: ToastrService
+    ) { }
 
 
   //filter
@@ -118,5 +122,6 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
 
   onDelete(event: any){
     this.movieService.remove(event).subscribe(movie => this.movieList$ = this.movieService.getAll());
+    this.toastr.warning('Movie Card deleted!')
   }
 }
