@@ -1,6 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { ToastrService } from 'ngx-toastr';
 import { Observable, of, switchMap } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
@@ -23,7 +24,8 @@ export class MovieEditorComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private movieService: MovieService,
-    private router: Router
+    private router: Router,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {}
@@ -38,4 +40,8 @@ export class MovieEditorComponent implements OnInit {
       .update(movie)
       .subscribe((movie) => this.router.navigate(['/movie-list']));
   }
+
+  showToaster(){
+    this.toastr.success('Successfully saved!')
+    }
 }

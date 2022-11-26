@@ -3,7 +3,7 @@
 "releaseYear":1992,"poster":"https://nettuts.hu/img/cinema-posters/district2.jpg",
 "studio":"Warner Brothers","active":true}  -->
 
-<div class="row">
+<div class="row pt-5">
   <div *ngIf="movie$ | async as movie"  class="col-6 offset-3">
     <h1 class="mt-5" >Movie Card Editor</h1>
     <hr class="mx-auto" style="width: 50%" />
@@ -126,6 +126,7 @@
         </select>
       </div>
       <button
+      (click)="showToaster()"
       [disabled]="eventForm.invalid"
         type="submit"
         class="btn btn-warning btn-lg mt-2"
