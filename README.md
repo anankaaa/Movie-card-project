@@ -24,11 +24,13 @@ Movie List:
 
 - A kártyákon található két gomb. A piros - kuka gombbal az adott kártyát tudjuk törölni. A kék - ceruza gombbal pedig a kártya adatait tudjuk módosítani egy szerkesztő oldalra átnavigálva. 
 
+- Add New Card gombra kattintva átvisz egy üres űrlapra, ahol a kötelező mezők kitöltésével és a SAVE gomb megnyomásával létrehoz egy új kártyát, melyet a Movie List oldal legutolsó elemeként helyez el a listában. 
+
 
 Szerkesztő odal: 
-- az URL-ben (http://localhost:4200/movie/id) szerint megnyitható, űrlap formában jelenik meg a szerkesztés lehetősége
+- Az URL-ben (http://localhost:4200/movie/id) szerint megnyitható, űrlap formában jelenik meg a szerkesztés lehetősége.
 
-- minden mező kitöltése kötelező, amennyiben nem felel meg az elvárásoknak azt a mező alatti figyelmeztető üzenet jelzi 
+- Minden mező kitöltése kötelező, amennyiben nem felel meg az elvárásoknak azt a mező alatti figyelmeztető üzenet jelzi.
 
 - minden mező kitöltése mellett lehetséges a mentés a 'SAVE' gomb megnyomásával, mely visszanavigál a Movie List oldalra, ahol a kártya a módosított adatokkal fog szerepelni.
 

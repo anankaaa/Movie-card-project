@@ -1,7 +1,7 @@
 import { Component, inject, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Observable, switchMap } from 'rxjs';
+import { Observable, of, switchMap } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
 
@@ -13,10 +13,12 @@ import { MovieService } from 'src/app/service/movie.service';
 export class MovieEditorComponent implements OnInit {
 
   movie$: Observable<Movie> = this.activatedRoute.params.pipe(
-    switchMap((params) => this.movieService.get(params['id']))
+    switchMap((params) =>
+     params['id'] != 0 ? this.movieService.get(params['id']) : of(new Movie())
+    ),
   );
 
-  movie: Movie = new Movie;
+  movie: Movie = new Movie();
 
   constructor(
     private activatedRoute: ActivatedRoute,
@@ -26,15 +28,14 @@ export class MovieEditorComponent implements OnInit {
 
   ngOnInit(): void {}
 
-    onUpdate(eventForm: NgForm, movie: Movie):void {
-      if(movie.id === 0 ){
-        this.movieService.create(movie).subscribe(movie => this.router.navigate(['/movie-list']))
-      }
-      this.movieService.update(movie).subscribe(movie => this.router.navigate(['/movie-list']))
+  onUpdate(eventForm: NgForm, movie: Movie): void {
+    if (movie.id === 0) {
+      this.movieService
+        .create(movie)
+        .subscribe((movie) => this.router.navigate(['/movie-list']));
     }
-
-     onSave(movie: Movie): void {
-      this.movieService.update(movie).subscribe(movie => this.router.navigate(['/movie-list']));
-    }
-
+    this.movieService
+      .update(movie)
+      .subscribe((movie) => this.router.navigate(['/movie-list']));
+  }
 }
