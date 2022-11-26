@@ -12,17 +12,11 @@ export class MovieCardComponent implements OnInit {
   @Input() movie: Movie = new Movie();
   @Output() deleteMovieEvent = new EventEmitter<Movie>();
 
- movieList$!: Observable<Movie[]>;
-
-  constructor(
-    private movieService: MovieService
-  ) {}
+  constructor() {}
 
   ngOnInit(): void {}
 
   onDelete(movie: Movie): void {
-    console.log(movie);
     this.deleteMovieEvent.emit(movie);
-    /* this.movieService.remove(movie).subscribe(movie => this.movieList$ = this.movieService.getAll()); */
   }
 }

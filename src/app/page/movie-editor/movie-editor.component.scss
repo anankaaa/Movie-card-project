@@ -26,16 +26,31 @@ h1 {
   justify-content: center;
 }
 
+@keyframes colorChange {
+  from {color: black;}
+  to {color: red;}
+
+  from {background-color: red;}
+  to {background-color: yellow;}
+}
+
 .error-message {
-  color: red;
+  color: black;
   font-weight: bolder;
   margin: 10px;
+  animation-name: colorChange;
+  animation-duration: 4s;
 }
+
+
 
 button {
   border:3px solid darkorange;
   color: rgb(10, 70, 10)
 }
+
+
+
 
 
 

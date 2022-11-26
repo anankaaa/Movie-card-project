@@ -16,14 +16,14 @@
           [(ngModel)]="movie.title"
           type="text"
           class="form-control"
-          pattern="[A-Z].{0,49}"
+          pattern="[A-Z].{0,99}"
           required
         />
         <div
           [hidden]="eventForm.controls['title']?.valid"
           class="error-message"
         >
-          The title must be with capital and be filled maximum 50 characters
+          The title must be with capital and be filled maximum 100 characters
           long.
         </div>
       </div>
@@ -34,14 +34,14 @@
           [(ngModel)]="movie.genre"
           type="text"
           class="form-control"
-          pattern="[A-Z].{0,25}"
+          pattern="[A-Z].{0,50}"
           required
         />
         <div
           [hidden]="eventForm.controls['category']?.valid"
           class="error-message"
         >
-          The category must be filled, maximum 25 characters long.
+          The category must be filled, maximum 50 characters long.
         </div>
       </div>
       <div class="form-group mb-2">
@@ -85,7 +85,7 @@
           [(ngModel)]="movie.studio"
           type="text"
           class="form-control"
-          pattern="(^[A-Za-z]{0,20})([ ]{0,1})([A-Za-z]{1,20})?([ ]{0,1})?([A-Za-z]{1,20})"
+          pattern="(^[A-Za-z0-9]{0,20})([ ]{0,1})([A-Za-z]{1,20})?([ ]{0,1})?([A-Za-z]{1,20})"
           required
         />
         <div

@@ -92,11 +92,7 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
     },
     {
       key: 'genre',
-      title: 'Genre',
-    },
-    {
-      key: 'director',
-      title: 'Director',
+      title: 'Category',
     },
     {
       key: 'releaseYear',
@@ -105,18 +101,13 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
     {
       key: 'studio',
       title: 'Studio',
-    },
-    {
-      key: 'active',
-      title: 'Active',
-    },
+    }
 
   ];
 
   searchColumns: ITableColumn[] = [];
 
   onDelete(event: any){
-    console.log(event);
     this.movieService.remove(event).subscribe(movie => this.movieList$ = this.movieService.getAll());
   }
 }
