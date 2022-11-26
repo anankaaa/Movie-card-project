@@ -1,13 +1,10 @@
 .new {
   display: flex;
-  justify-content: flex-start;
-  margin-right: 50px;
+  justify-content: flex-end;
 }
 
 .input-group {
-  width: 30%;
   margin-right: 50px;
-
 }
 
 .pagination {
@@ -16,9 +13,32 @@
 }
 
 .previous, .next {
-  color: darkblue;
+  color: white;
+  background-color: darkslategrey;
   font-size: medium;
   font-weight: bolder;
   border-color: darkblue;
+}
+
+.select, .sortingSelect {
+  background-color: darkslategrey;
+  color: white;
+}
+
+.input-group {
+  border: 1.5px solid darkslateblue;
+  border-radius: 5px;
+}
+
+h1 {
+  color: darkslategrey;
+  display: flex;
+}
+
+
+
+.sortingSelect {
+  border-radius: 5px;
+  height: 3em;
 }
 

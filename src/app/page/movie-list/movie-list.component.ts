@@ -23,6 +23,9 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
   filterPhrase: string = '';
   filterKey: string = '';
 
+  //sorter
+  sorterKey: string = '';
+
   //paginator
   @Input() pageSize: number = 20;
   currentPage: number = 1;
@@ -106,6 +109,12 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
   ];
 
   searchColumns: ITableColumn[] = [];
+
+  //sorter
+
+  onSorter (key: string): void {
+    this.sorterKey = key
+  }
 
   onDelete(event: any){
     this.movieService.remove(event).subscribe(movie => this.movieList$ = this.movieService.getAll());

@@ -34,7 +34,7 @@ export class MovieEditorComponent implements OnInit {
     }
 
      onSave(movie: Movie): void {
-      this.movieService.update(movie).subscribe(movie => this.router.navigate(['/movie-list']))
+      this.movieService.update(movie).subscribe(movie => this.router.navigate(['/movie-list']));
     }
 
 }

@@ -1,12 +1,18 @@
-<h1>Movie List</h1>
+<h1 class="mb-5 justify-content-center">Movie List</h1>
+
+<div class="new">
+  <button class="btn btn-success mb-5" [routerLink]="['/movie', 0]">
+    + Add New Movie Card
+  </button>
+</div>
 
 
-<div class="row">
-  <div class="col-12 my-2">
-    <div class="input-group mb-3">
+<div class="search row">
+  <div class="col-12 col-sm-6 my-2">
+    <div class="input-group">
       <div class="input-group-text">
-        <select [(ngModel)]="filterKey" class="form-control">
-          <option value="">Select from Menu</option>
+        <select [(ngModel)]="filterKey" class="form-control select">
+          <option  value="">Select from Menu</option>
           <option *ngFor="let col of columns" [value]="col.key">
             {{ col.title }}
           </option>
@@ -18,16 +24,22 @@
 </div>
 
 
-<div class="new mr-3">
-  <button class="btn btn-success mb-5" [routerLink]="['/movie', 0]">
-    + New Movie Card
-  </button>
+
+
+<div class="sorterContainer row mb-5 mt-2">
+  <div class="sorter">
+    <div>
+      <select class="sortingSelect col-12 col-sm-2" [(ngModel)]="sorterKey">
+        <option value="">Sorting by ...</option>
+        <option *ngFor="let col of columns" [value]="col.key">{{col.title}}</option>
+      </select>
+    </div>
+  </div>
 </div>
 
 
-
 <div class="pagination row">
-  <div class="col-12">
+  <div class="col-12 col-sm-6">
     <nav aria-label="Page navigation example">
       <ul class="pagination">
         <li class="page-item">
@@ -49,7 +61,10 @@
 </div>
 
 
-<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
+
+
+
+<div class="row row-cols-1 row-cols-md-2 row-cols-lg-4 mt-5">
   <app-movie-card
   (deleteMovieEvent)="onDelete($event)"
   class="mb-4"
@@ -64,7 +79,9 @@
     studio: filterPhrase,
     releaseYear: filterPhrase
   }
+  | sorter: sorterKey
   "
   [movie]="movie"
   ></app-movie-card>
 </div>
+
