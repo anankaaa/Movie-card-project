@@ -9,3 +9,27 @@ Alkalmazás elindítása:
 
 Kiegészítők:
 - Bootstrap v. 5-t és Font-awesome-t használtam a weboldal megjelenítéséhez 
+
+
+Home oldal:
+- Bemutatkozó oldal
+
+
+Movie List:
+- Az oldal a filmeket kártyás formátumban listázza, egy oldalon 20 darabot, a lapozó segítségével lehet a következő 20 kártyára navigálni.
+
+- Searching menüből kiválasztható, hogy a kártya mely tulajdonságában szeretnénk keresni. A kereső mezőbe beírva listázza azon kártyákat, melyeken megtalálható a keresett szöveg.
+
+- 'Sorting by...' menüből kiválasztva a kártya tulajdonsága szerint lehet növekvő sorrendbe szervezni a kártyákat.
+
+- A kártyákon található két gomb. A piros - kuka gombbal az adott kártyát tudjuk törölni. A kék - ceruza gombbal pedig a kártya adatait tudjuk módosítani egy szerkesztő oldalra átnavigálva. 
+
+
+Szerkesztő odal: 
+- az URL-ben (http://localhost:4200/movie/id) szerint megnyitható, űrlap formában jelenik meg a szerkesztés lehetősége
+
+- minden mező kitöltése kötelező, amennyiben nem felel meg az elvárásoknak azt a mező alatti figyelmeztető üzenet jelzi 
+
+- minden mező kitöltése mellett lehetséges a mentés a 'SAVE' gomb megnyomásával, mely visszanavigál a Movie List oldalra, ahol a kártya a módosított adatokkal fog szerepelni.
+
+
