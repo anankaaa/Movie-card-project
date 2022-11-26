@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
 import { MovieService } from 'src/app/service/movie.service';
@@ -10,8 +10,9 @@ import { MovieService } from 'src/app/service/movie.service';
 })
 export class MovieCardComponent implements OnInit {
   @Input() movie: Movie = new Movie();
+  @Output() deleteMovieEvent = new EventEmitter<Movie>();
 
- movieList$: Observable<Movie[]>  = this.movieService.getAll();
+ movieList$!: Observable<Movie[]>;
 
   constructor(
     private movieService: MovieService
@@ -20,6 +21,8 @@ export class MovieCardComponent implements OnInit {
   ngOnInit(): void {}
 
   onDelete(movie: Movie): void {
-    this.movieService.remove(movie).subscribe(movie => this.movieList$ = this.movieService.getAll());
+    console.log(movie);
+    this.deleteMovieEvent.emit(movie);
+    /* this.movieService.remove(movie).subscribe(movie => this.movieList$ = this.movieService.getAll()); */
   }
 }

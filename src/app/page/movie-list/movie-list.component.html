@@ -6,13 +6,13 @@
     <div class="input-group mb-3">
       <div class="input-group-text">
         <select [(ngModel)]="filterKey" class="form-control">
-          <option value="">Click for Search Menu</option>
+          <option value="">Select from Menu</option>
           <option *ngFor="let col of columns" [value]="col.key">
             {{ col.title }}
           </option>
         </select>
       </div>
-      <input [(ngModel)]="filterPhrase" class="form-control" type="text" placeholder="@Search text">
+      <input [(ngModel)]="filterPhrase" class="form-control" type="text" placeholder="@Searching text">
     </div>
   </div>
 </div>
@@ -51,6 +51,7 @@
 
 <div class="row row-cols-1 row-cols-md-2 row-cols-lg-4">
   <app-movie-card
+  (deleteMovieEvent)="onDelete($event)"
   class="mb-4"
   *ngFor="
   let movie of movieList$

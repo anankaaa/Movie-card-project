@@ -114,4 +114,9 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
   ];
 
   searchColumns: ITableColumn[] = [];
+
+  onDelete(event: any){
+    console.log(event);
+    this.movieService.remove(event).subscribe(movie => this.movieList$ = this.movieService.getAll());
+  }
 }
