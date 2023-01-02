@@ -20,7 +20,7 @@
           required
         />
         <div
-          [hidden]="eventForm.controls['title']?.valid"
+          [hidden]="eventForm.controls['title'].valid"
           class="error-message"
         >
           The title must be with capital and be filled maximum 100 characters
@@ -38,7 +38,7 @@
           required
         />
         <div
-          [hidden]="eventForm.controls['category']?.valid"
+          [hidden]="eventForm.controls['category'].valid"
           class="error-message"
         >
           The category must be filled, maximum 50 characters long.
@@ -55,7 +55,7 @@
           required
         />
         <div
-          [hidden]="eventForm.controls['director']?.valid"
+          [hidden]="eventForm.controls['director'].valid"
           class="error-message"
         >
           Director must be filled with capital letters, maximum 3 nametag.
@@ -72,7 +72,7 @@
           required
         />
         <div
-          [hidden]="eventForm.controls['releaseYear']?.valid"
+          [hidden]="eventForm.controls['releaseYear'].valid"
           class="error-message"
         >
           Release Year must be from 1900 and 4 character long.
@@ -89,7 +89,7 @@
           required
         />
         <div
-          [hidden]="eventForm.controls['studio']?.valid"
+          [hidden]="eventForm.controls['studio'].valid"
           class="error-message"
         >
           Studio must be filled with capital letters, maximum 3 nametag.
@@ -105,7 +105,7 @@
           required
         />
         <div
-          [hidden]="eventForm.controls['poster']?.valid"
+          [hidden]="eventForm.controls['poster'].valid"
           class="error-message"
         >
           Poster URL must be added.

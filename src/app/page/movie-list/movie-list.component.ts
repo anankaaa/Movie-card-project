@@ -1,4 +1,5 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { NgxSpinnerService } from 'ngx-spinner';
 import { ToastrService } from 'ngx-toastr';
 import { Observable } from 'rxjs';
 import { Movie } from 'src/app/model/movie';
@@ -37,18 +38,23 @@ export class MovieListComponent<T extends {[x: string]: any}> implements OnInit 
 
   constructor(
     private movieService: MovieService,
-    private toastr: ToastrService
+    private toastr: ToastrService,
+    private spinner: NgxSpinnerService
     ) { }
 
 
   //filter
   ngOnInit(): void {
+
+    this.spinner.show();
+
+
     fetch('https://nettuts.hu/jms/anankaaa/cinema')
       .then(
         response => response.json(),
       ).then(
         list => this.movies = list,
-      );
+      ).finally(() =>this.spinner.hide());
   }
 
   //paginator
